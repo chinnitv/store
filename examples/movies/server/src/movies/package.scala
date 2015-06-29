@@ -97,7 +97,7 @@ package object movies {
       implicit val mapper = if (req.pretty) prettyJson else textJson
       val rsp = req.response
       rsp.status = Status.Ok
-      rsp.json = value
+      rsp.json_= (value) (mapper)
       rsp
     }
 
@@ -110,7 +110,7 @@ package object movies {
       rsp.readTxClock = req.readTxClock
       rsp.valueTxClock = time
       rsp.vary = "Read-TxClock"
-      rsp.json = value
+      rsp.json_= (value) (mapper)
       rsp
     }
 
@@ -118,7 +118,7 @@ package object movies {
       implicit val mapper = if (req.pretty) prettyJson else textJson
       val rsp = req.response
       rsp.status = Status.Ok
-      rsp.json = iter
+      rsp.json_= (iter) (mapper)
       rsp
     }}
 
